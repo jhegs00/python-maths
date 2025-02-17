@@ -1,3 +1,4 @@
+
 """Test the arithmetic functions."""
 
 import pytest
@@ -51,7 +52,6 @@ def test_multiply(x: int | float, y: int | float, expected: int | float) -> None
     """Test the multiply function."""
     assert arithmetic.multiply(x, y) == pytest.approx(expected)
 
-
 @pytest.mark.parametrize(  # type: ignore[misc]
     ("x", "y", "expected"),
     [
@@ -64,3 +64,7 @@ def test_multiply(x: int | float, y: int | float, expected: int | float) -> None
 def test_divide(x: int | float, y: int | float, expected: int | float) -> None:
     """Test the divide function."""
     assert arithmetic.divide(x, y) == pytest.approx(expected)
+    def test_divide_zero_division_exception() -> None:
+        """Test that a ZeroDivisionError is raised by the divide() function."""
+        with pytest.raises(ZeroDivisionError):
+            arithmetic.divide(2, 0)

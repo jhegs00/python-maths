@@ -1,6 +1,5 @@
 """Functions for basic arithmetic."""
 
-
 def add(x: int | float, y: int | float) -> float:
     """
     Add two numbers together.
@@ -25,7 +24,12 @@ def add(x: int | float, y: int | float) -> float:
     >>> arithmetic.add(1.45, 1.89)
       3.34
     """
-    return x + y
+    try:
+        return x + y
+    except ZeroDivisionError as e:
+        raise ZeroDivisionError(
+	    "You can not divide by 0, please choose another value for 'y'."
+        ) from e	
 
 
 def divide(x: int | float, y: int | float) -> float:
